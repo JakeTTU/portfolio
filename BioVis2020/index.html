@@ -574,7 +574,7 @@
 
 
     function loadTree(familyName,isRight){
-        d3.json(familyName+".json", function(data) {
+        d3.json("familyData/"+familyName+".json", function(data) {
             dataLists[+isRight] = {id: 'Tree'+(+isRight), data:data};
             createHolder(dataLists)
         })
