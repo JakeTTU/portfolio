@@ -1,0 +1,19 @@
+.svgHolder {
+    display: inline;
+}
+
+.menu1{
+    position: absolute;
+    left: 440px;
+    top: 20px;
+}
+.menu2{
+    position: absolute;
+    left: 1450px;
+    top: 20px;
+}
+.legend{
+    position: absolute;
+    top:175px;
+    right:0;
+}

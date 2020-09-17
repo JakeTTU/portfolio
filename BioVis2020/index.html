@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BioVis</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+    <link rel="stylesheet" href="style/graph.css">
+</head>
+<body>
+<select id="select1" class="menu1" onchange="loadTree(value,0)" style = "font-family:monospace; font-size:18px">
+    <option value="family38_5">family38</option>
+    <option value="family149_5">family149</option>
+    <option value="family27251_5">family27251</option>
+    <option value="family42623_5">family42623</option>
+    <option value="family68939_5">family68939</option>
+    <option value="family176860_5">family176860</option>
+    <option value="family603481_5">family603481</option>
+    <option value="family791533_5">family791533</option>
+    <option value="family903988_5">family903988</option>
+</select>
+<select id="select2" class="menu2" onchange="loadTree(value,1)" style = "font-family:monospace; font-size:18px">
+    <option value="family38_5">family38</option>
+    <option value="family149_5">family149</option>
+    <option value="family27251_5">family27251</option>
+    <option value="family42623_5">family42623</option>
+    <option selected value="family68939_5">family68939</option>
+    <option value="family176860_5">family176860</option>
+    <option value="family603481_5">family603481</option>
+    <option value="family791533_5">family791533</option>
+    <option value="family903988_5">family903988</option>
+</select>
+<div id="my_dataviz"></div>
+<script>
+
+    var graphicOpt = {
+        width: 1000,
+        height: 1000,
+        radius: 1000/2,
+    }
+    let graphicOpt_radialC = {
+        width:40,
+        height:60,
+        color: d3.scaleOrdinal()
+            .range(["aqua", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy", "olive", "orange", "purple", "red", "silver", "teal", "black", "yellow"]),
+            //.range(["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f","#eea60d","#a9402a","#845d54",,"#056f1f","#475e4c"])
+        attribute: d3.scaleOrdinal()
+            .range(["Alcohol", "Psychosis", "Anxiety-non-trauma", "Somatic disorder", "Bipolar spectrum illness", "Depression", "Interpersonal trauma", "PD-Cluster C-anxiety", "PD-Cluster B-emotional", "PD", "Impulse control disorder", "Obesity", "Cardiovascular", "COPD", "Asthma", "Immune-autoimmune"])
+    }
+    var svgContainer = d3.select("body")
+        .append("svg")
+        .attr("class", "legend")
+        .attr("width", 180)
+        .attr("height", 800);
+
+    d3.selection.prototype.moveToFront = function() {
+        return this.each(function(){
+            this.parentNode.appendChild(this);
+        });
+    };
+
+    function drawRadialChartFem({holder,data,graphicopt}) {
+        let width = graphicopt.width;
+        let height = graphicopt.height;
+        let barHeight = height / 2;
+        let color = graphicopt.color;
+        let svg = holder.append("g")
+            // .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+        data = d3.entries(data);
+        var extent = d3.extent(data, function (d) {
+            return d.value;
+        });
+        var barScale = d3.scaleLinear()
+            .domain(extent)
+            .range([0, barHeight]);
+        //console.log(data)
+        var keys = data.map(function (d, i) {
+            return d.key;
+        });
+        var numBars = keys.length;
+
+        var arc = d3.arc()
+            .startAngle(function (d, i) {
+                return (i * 2 * Math.PI) / numBars;
+            })
+            .endAngle(function (d, i) {
+                return ((i + 1) * 2 * Math.PI) / numBars;
+            })
+            .innerRadius(0)
+            .outerRadius(d => barScale(+d.value));
+        svg.append("circle")
+            .attr("r", barHeight)
+            .classed("outer", true)
+            .style("fill", "none")
+            .style("stroke", "none")
+            //.style("stroke-width", 0.5);
+        var segments = svg.selectAll("path")
+            .data(data)
+            .enter().append("path")
+            .each(function (d) {
+                d.outerRadius = 0;
+            })
+            .style("fill", function (d) {
+                return color(d.key);
+            })
+            .attr("d", arc);
+        svg.append("circle")
+            .attr("r", 10)
+            .style("fill", "white")
+            .style("stroke", "black")
+            .style("stroke-width", 0.5);
+        svg.append("circle")
+            .attr("r", function (d) {
+                if (d.data.data.group === "couple")
+                    return (Math.sqrt(((d.data.data.fem_age/120)*(Math.PI*(Math.pow(10,2))))/Math.PI));
+                else
+                    return (Math.sqrt(((d.data.data.ind_age/120)*(Math.PI*(Math.pow(10,2))))/Math.PI));
+            })
+            .style("fill", "#000000")
+
+    }
+
+    function drawRadialChartMal({holder,data,graphicopt}) {
+        let width = graphicopt.width;
+        let height = graphicopt.height;
+        let barHeight = height / 2;
+        let color = graphicopt.color;
+        let svg = holder.append("g")
+        // .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+        data = d3.entries(data);
+        var extent = d3.extent(data, function (d) {
+            return d.value;
+        });
+        var barScale = d3.scaleLinear()
+            .domain(extent)
+            .range([0, barHeight]);
+        //console.log(data)
+        var keys = data.map(function (d, i) {
+            return d.key;
+        });
+        var numBars = keys.length;
+
+        var arc = d3.arc()
+            .startAngle(function (d, i) {
+                return (i * 2 * Math.PI) / numBars;
+            })
+            .endAngle(function (d, i) {
+                return ((i + 1) * 2 * Math.PI) / numBars;
+            })
+            .innerRadius(0)
+            .outerRadius(d => barScale(+d.value));
+        svg.append("circle")
+            .attr("r", barHeight)
+            .classed("outer", true)
+            .style("fill", "none")
+            .style("stroke", "none")
+        //.style("stroke-width", 0.5);
+        var segments = svg.selectAll("path")
+            .data(data)
+            .enter().append("path")
+            .each(function (d) {
+                d.outerRadius = 0;
+            })
+            .style("fill", function (d) {
+                return color(d.key);
+            })
+            .attr("d", arc);
+
+        svg.append("rect")
+            .style('fill', 'white')
+            .attr("height", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("width", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("y", -Math.sqrt(Math.PI * (Math.pow(10, 2))) / 2)
+            .attr("x", -Math.sqrt(Math.PI * (Math.pow(10, 2))) / 2)
+            .attr("stroke", "black")
+            .style("stroke-width", .5);
+        svg.append("rect")
+            .attr("height", function (d) {
+                if (d.data.data.group === "couple")
+                    return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120)));
+                else
+                    return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120)));
+
+            })
+            .attr("width", function (d) {
+                if (d.data.data.group === "couple")
+                    return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120)));
+                else
+                    return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120)));
+
+            })
+            .style("fill", "#000000")
+            .attr("y", function (d) {
+                if (d.data.data.group === "couple")
+                    return -((Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120))) / 2);
+                else
+                    return -((Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120))) / 2);
+            })
+            .attr("x", function (d) {
+                if (d.data.data.group === "couple")
+                    return -((Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120))) / 2);
+                else
+                    return -((Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120))) / 2);
+
+            })
+            .attr("stroke", "black")
+            .style("stroke-width", .5);
+    }
+
+    // append the svg object to the body of the page
+    function createHolder(listTree) { // [{id: family1, data: loaded from json}]
+        let holders = d3.select('#my_dataviz')
+            .selectAll('div.svgHolder')
+            .data(listTree,d=>d.id)
+            .call(updateHoders);
+        holders.exit().remove();
+        holders
+            .enter()
+            .append('div')
+            .attr('class','svgHolder')
+            .call(updateHoders);
+
+        function updateHoders(p){
+            return p.attr('id',d=>d.id)
+                .each(function(d){drawTree('#'+d.id,d.data,graphicOpt)});
+        }
+    }
+
+    function drawTree(holder,data,graphicOpt) {
+        // set the dimensions and margins of the graph
+        var width = graphicOpt.width;
+        var height = graphicOpt.height;
+        var radius = graphicOpt.radius; // radius of the dendrogram
+
+
+        let div = d3.select(holder);
+        let svg = div.select('svg g.content')
+            .attr("transform", "translate(" + radius + "," + radius + ")");
+        if (svg.empty()) // no svg
+        {
+            svg = div
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr('class', 'content')
+                .attr("transform", "translate(" + radius + "," + radius + ")");
+        }
+        svg.selectAll("*").remove();
+        // Create the cluster layout:
+        var cluster = d3.cluster()
+            .size([360, radius - 60]);  // 360 means whole circle. radius - 60 means 60 px of margin around dendrogram
+
+        // Give the data to this cluster layout:
+        var root = d3.stratify()
+            .id(function (d) {
+                return d.name;
+            })
+            .parentId(function (d) {
+                return d.parent;
+            })
+            (data);
+
+        cluster(root);
+
+        // Features of the links between nodes:
+        var linksGenerator = d3.linkRadial()
+            .angle(function (d) {
+                return d.x / 180 * Math.PI;
+            })
+            .radius(function (d) {
+                return d.y;
+            });
+
+        // Add the links between nodes:
+        svg.selectAll('path')
+            .data(root.links())
+            .enter()
+            .append('path')
+            .attr("d", linksGenerator)
+            .style("fill", 'none')
+            .attr("stroke", '#ccc')
+
+
+        // Add nodes.
+        var node = svg.selectAll(".node")
+            .data(root.descendants())
+            .enter()
+            .append("g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+            });
+
+        node.selectAll('node').data(d => {
+            let datainput = [];
+            if (d.data.group === "couple")
+                datainput = [{key: 'mal', data: d}];
+            return datainput.filter(person => !d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr("class", "Mal");
+
+        node.selectAll("g.Mal")
+            .append('rect')
+            .style('fill', 'none')
+            .attr("height", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("width", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("y", -Math.sqrt(Math.PI * (Math.pow(10, 2))) - 1)
+            .attr("x", -Math.sqrt(Math.PI * (Math.pow(10, 2))) / 2)
+            .attr("stroke", "black")
+            .style("stroke-width", .5);
+
+        node.selectAll("g.Mal")
+            .append('rect')
+            .attr("height", function (d) {
+                return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120)));
+
+            })
+            .attr("width", function (d) {
+                return (Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120)));
+
+            })
+            .style("fill", function (d) {
+                if (d.data.data[d.key + '_suicide'] == 'Y') {
+                    return "red"
+                }
+                if (d.data.data[d.key + '_deceased'] == 'Y') {
+                    return "#D8D8D8"
+                } else {
+                    return "#94D1CE"
+                }
+            })
+            .attr("y", function (d) {
+                return -(Math.sqrt((Math.PI * (Math.pow(10, 2))))) / 2 - ((Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120))) / 2) - 1;
+            })
+            .attr("x", function (d) {
+                return -(Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.mal_age / 120))) / 2;
+
+            })
+            .attr("stroke", "none")
+            .style("stroke-width", .5);
+
+        node.selectAll('node').data(d => {
+            let datainput = [];
+            if (d.data.group === "individual")
+                if (d.data.ind_sex === "M")
+                    datainput = [{key: 'ind', data: d}];
+            return datainput.filter(person => !d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr("class", "indM");
+
+        node.selectAll("g.indM")
+            .append('rect')
+            .style('fill', 'none')
+            .attr("height", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("width", Math.sqrt(Math.PI * (Math.pow(10, 2))))
+            .attr("y", -Math.sqrt(Math.PI * (Math.pow(10, 2))) / 2)
+            .attr("x", -Math.sqrt(Math.PI * (Math.pow(10, 2))) / 2)
+            .attr("stroke", "black")
+            .style("stroke-width", .5);
+
+        node.selectAll("g.indM")
+            .append('rect')
+            .attr("height", function (d) {
+                return Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120));
+
+            })
+            .attr("width", function (d) {
+                return Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120));
+
+            })
+            .style("fill", function (d) {
+                if (d.data.data[d.key + '_suicide'] == 'Y') {
+                    return "red"
+                }
+                if (d.data.data[d.key + '_deceased'] == 'Y') {
+                    return "#D8D8D8"
+                } else {
+                    return "#94D1CE"
+                }
+            })
+            .attr("y", function (d) {
+                return -(Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120))) / 2;
+
+            })
+            .attr("x", function (d) {
+                return -(Math.sqrt((Math.PI * (Math.pow(10, 2))) * (d.data.data.ind_age / 120))) / 2;
+
+            })
+            .attr("stroke", "none")
+            .style("stroke-width", .5);
+
+        node.selectAll('node').data(d => {
+            let datainput = [];
+            if (d.data.group === "couple")
+                datainput = [{key: 'fem', data: d}];
+            return datainput.filter(person => !d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr("class", "Fem");
+
+        node.selectAll("g.Fem")
+            .append("circle")
+            .attr("r", 10)
+            .style("fill", "none")
+            .attr("cy", 11)
+            .attr("stroke", "black")
+            .style("stroke-width", .5)
+
+        node.selectAll("g.Fem")
+            .append('circle')
+            .attr("r", function (d) {
+                return (Math.sqrt(((d.data.data.fem_age / 120) * (Math.PI * (Math.pow(10, 2)))) / Math.PI));
+                //return (10*(d.data.data.fem_age/100));
+            })
+            //.style("fill", "black")
+            .style("fill", function (d) {
+                if (d.data.data[d.key + '_suicide'] == 'Y') {
+                    return "red"
+                }
+                if (d.data.data[d.key + '_deceased'] == 'Y') {
+                    return "#D8D8D8"
+                } else {
+                    return "#94D1CE"
+                }
+            })
+            .attr("cy", 11)
+            .attr("stroke", "none")
+            .style("stroke-width", .5);
+
+        node.selectAll('node').data(d => {
+            let datainput = [];
+            if (d.data.group === "individual")
+                if (d.data.ind_sex === 'F')
+                    datainput = [{key: 'ind', data: d}]
+            return datainput.filter(person => !d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr("class", "indF");
+
+        node.selectAll("g.indF")
+            .append("circle")
+            .attr("r", 10)
+            .style("fill", "none")
+            .attr("cy", 0)
+            .attr("stroke", "black")
+            .style("stroke-width", .5)
+
+        node.selectAll("g.indF")
+            .append('circle')
+            .attr("r", function (d) {
+                return (Math.sqrt(((d.data.data.ind_age / 120) * (Math.PI * (Math.pow(10, 2)))) / Math.PI));
+                //return (10*(d.data.data.ind_age/100));
+
+            })
+            //.style("fill", "black")
+            .style("fill", function (d) {
+                if (d.data.data[d.key + '_suicide'] == 'Y') {
+                    return "red"
+                }
+                if (d.data.data[d.key + '_deceased'] == 'Y') {
+                    return "#D8D8D8"
+                } else {
+                    return "#94D1CE"
+                }
+            })
+            .attr("cy", 0)
+            .attr("stroke", "none")
+            .style("stroke-width", .5);
+
+        node.selectAll('g.personRadial').data(d => {
+            let datainput = [];
+            if (d.data.group === "individual")
+                if (d.data.ind_sex === "F")
+                    datainput = [{key: 'ind', data: d}];
+            return datainput.filter(person => d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr('class', 'personRadial')
+            .attr('transform', d => `translate(0,${d.key === 'ind' ? 0 : (d.key === "mal" ? -11 : 11)})`)
+            .on('mouseover', function () {
+                d3.select(this.parentNode).moveToFront();
+                d3.select(this).select('g').attr('transform', 'scale(8)');
+            }).on('mouseout', function () {
+            d3.select(this).select('g').attr('transform', 'scale(1)');
+        })
+            .each(function (d) {
+                // draw radial function
+                drawRadialChartFem({
+                    holder: d3.select(this),
+                    data: d.data.data[d.key + '_data'],
+                    graphicopt: graphicOpt_radialC
+                })
+            })
+
+        node.selectAll('g.personRadial').data(d => {
+            let datainput = [];
+            if (d.data.group === "couple")
+                datainput = [{key: 'fem', data: d}];
+            return datainput.filter(person => d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr('class', 'personRadial')
+            .attr('transform', d => `translate(0,${d.key === 'ind' ? 0 : (d.key === "mal" ? -11 : 11)})`)
+            .on('mouseover', function () {
+                d3.select(this.parentNode).moveToFront();
+                d3.select(this).select('g').attr('transform', 'scale(8)');
+            }).on('mouseout', function () {
+            d3.select(this).select('g').attr('transform', 'scale(1)');
+        })
+            .each(function (d) {
+                // draw radial function
+                drawRadialChartFem({
+                    holder: d3.select(this),
+                    data: d.data.data[d.key + '_data'],
+                    graphicopt: graphicOpt_radialC
+                })
+            })
+
+
+        node.selectAll('g.personRadial').data(d => {
+            let datainput = [];
+            if (d.data.group === "couple")
+                datainput = [{key: 'mal', data: d}];
+            return datainput.filter(person => d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr('class', 'personRadial')
+            .attr('transform', d => `translate(0,${d.key === 'ind' ? 0 : (d.key === "mal" ? -11 : 11)})`)
+            .on('mouseover', function () {
+                d3.select(this.parentNode).moveToFront();
+                d3.select(this).select('g').attr('transform', 'scale(4)');
+            }).on('mouseout', function () {
+            d3.select(this).select('g').attr('transform', 'scale(1)');
+        })
+            .each(function (d) {
+                // draw radial function
+                drawRadialChartMal({
+                    holder: d3.select(this),
+                    data: d.data.data[d.key + '_data'],
+                    graphicopt: graphicOpt_radialC
+                })
+            })
+
+        node.selectAll('g.personRadial').data(d => {
+            let datainput = [];
+            if (d.data.group === "individual")
+                if (d.data.ind_sex === "M")
+                    datainput = [{key: 'ind', data: d}];
+            return datainput.filter(person => d.data[person.key + '_data']);
+        }).enter()
+            .append('g')
+            .attr('class', 'personRadial')
+            .attr('transform', d => `translate(0,${d.key === 'ind' ? 0 : (d.key === "mal" ? -11 : 11)})`)
+            .on('mouseover', function () {
+                d3.select(this.parentNode).moveToFront();
+                d3.select(this).select('g').attr('transform', 'scale(4)');
+            }).on('mouseout', function () {
+            d3.select(this).select('g').attr('transform', 'scale(1)');
+        })
+            .each(function (d) {
+                // draw radial function
+                drawRadialChartMal({
+                    holder: d3.select(this),
+                    data: d.data.data[d.key + '_data'],
+                    graphicopt: graphicOpt_radialC
+                })
+            })
+
+    }
+
+
+    function loadTree(familyName,isRight){
+        d3.json(familyName+".json", function(data) {
+            dataLists[+isRight] = {id: 'Tree'+(+isRight), data:data};
+            createHolder(dataLists)
+        })
+    }
+
+    function makeKey(){
+        var x = 20;
+        var y = 20;
+        var space = 40;
+        var nameSpacingx = 18;
+        var nameSpacingy = 5;
+        var r = 12
+
+        var key1 = d3.select("svg")
+            .append("g");
+        key1.append("circle")
+            .attr("cx", x)
+            .attr("cy", y)
+            .attr("r", r)
+            .style("fill", "aqua")
+        key1.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Alcohol");
+        var key2 = d3.select("svg")
+            .append("g");
+        key2.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space)
+            .attr("r", r)
+            .style("fill", "blue")
+        key2.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Psychosis");
+        var key3 = d3.select("svg")
+            .append("g");
+        key3.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*2)
+            .attr("r", r)
+            .style("fill", "fuchsia")
+        key3.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*2 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Anxiety-non-trauma");
+        var key4 = d3.select("svg")
+            .append("g");
+        key4.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*3)
+            .attr("r", r)
+            .style("fill", "gray")
+        key4.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*3 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Somatic disorder");
+        var key5 = d3.select("svg")
+            .append("g");
+        key5.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*4)
+            .attr("r", r)
+            .style("fill", "green")
+        key5.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*4 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Bipolar spectrum illness");
+        var key6 = d3.select("svg")
+            .append("g");
+        key6.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*5)
+            .attr("r", r)
+            .style("fill", "lime")
+        key6.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*5 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Depression");
+        var key7 = d3.select("svg")
+            .append("g");
+        key7.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*6)
+            .attr("r", r)
+            .style("fill", "maroon")
+        key7.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*6 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Interpersonal trauma");
+        var key8 = d3.select("svg")
+            .append("g");
+        key8.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*7)
+            .attr("r", r)
+            .style("fill", "navy")
+        key8.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*7 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("PD-Cluster C-anxiety");
+        var key9 = d3.select("svg")
+            .append("g");
+        key9.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*8)
+            .attr("r", r)
+            .style("fill", "olive")
+        key9.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*8 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("PD-Cluster B-emotional");
+        var key10 = d3.select("svg")
+            .append("g");
+        key10.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*9)
+            .attr("r", r)
+            .style("fill", "orange")
+        key10.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*9 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("PD");
+        var key11 = d3.select("svg")
+            .append("g");
+        key11.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*10)
+            .attr("r", r)
+            .style("fill", "purple")
+        key11.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*10 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Impulse control disorder");
+        var key12 = d3.select("svg")
+            .append("g");
+        key12.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*11)
+            .attr("r", r)
+            .style("fill", "red")
+        key12.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*11 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Obesity");
+        var key13 = d3.select("svg")
+            .append("g");
+        key13.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*12)
+            .attr("r", r)
+            .style("fill", "silver")
+        key13.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*12 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Cardiovascular");
+        var key14 = d3.select("svg")
+            .append("g");
+        key14.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*13)
+            .attr("r", r)
+            .style("fill", "teal")
+        key14.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*13 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("COPD");
+        var key15 = d3.select("svg")
+            .append("g");
+        key15.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*14)
+            .attr("r", r)
+            .style("fill", "black")
+        key15.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*14 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Asthma");
+        var key16 = d3.select("svg")
+            .append("g");
+        key16.append("circle")
+            .attr("cx", x)
+            .attr("cy", y + space*15)
+            .attr("r", r)
+            .style("fill", "yellow")
+        key16.append("text")
+            .attr("dx", x + nameSpacingx)
+            .attr("dy", y + space*15 + nameSpacingy)
+            .style("font-size", "14px")
+            .text("Immune-autoimmune");
+
+
+    }
+
+    
+    let dataLists =[];
+    // read json data
+    loadTree("family38_5",0);
+    loadTree("family603481_5",1);
+    makeKey();
+
+</script>
+
+</body>
+</html>
+<!-- https://www.d3-graph-gallery.com/graph/dendrogram_radial_basic.html -->
