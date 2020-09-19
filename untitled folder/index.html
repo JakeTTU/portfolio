@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="packages/aframe.min.js"></script>
+
+    <title>Project1</title>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <a-asset-item id="bed" src="packages/assets/textured_hospital_bed/scene.gltf"></a-asset-item>
+        <a-asset-item id="curtain" src="packages/assets/curtains/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="lightFixture" src="packages/assets/light_fixture_-_ceiling_recessed/scene.gltf"></a-asset-item>
+        <a-asset-item id="lightSwitch" src="packages/assets/light_switch/scene.gltf"></a-asset-item>
+        <a-asset-item id="door" src="packages/assets/simple_wood_door/scene.gltf"></a-asset-item>
+        <a-asset-item id="bed2" src="packages/assets/bed/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="TV" src="packages/assets/TV/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="sink" src="packages/assets/simple_sink/scene.gltf"></a-asset-item>
+        <a-asset-item id="soap" src="packages/assets/soap_dispenser/scene.gltf"></a-asset-item>
+        <a-asset-item id="sanitizer" src="packages/assets/sanitizer_bottle/scene.gltf"></a-asset-item>
+        <a-asset-item id="table" src="packages/assets/adjustable_bedside_table/scene.gltf"></a-asset-item>
+
+        <img id="floor" src="packages/textures/floor.jpg">
+        <img id="ceiling" src="packages/textures/ceiling.jpg">
+        <img id="wall" src="packages/textures/wall.jpg">
+    </a-assets>
+
+    <a-entity gltf-model="#sanitizer" position="4 1.7 1.5" rotation="0 -90 0" scale=".03 .03 .03"></a-entity>
+    <a-entity gltf-model="#table" position="4.25 0 1.5" rotation="0 -90 0" scale=".5 .45 .4"></a-entity>
+    <a-entity gltf-model="#soap" position="2.45 2.05 3.25" rotation="0 75 0"></a-entity>
+    <a-entity gltf-model="#sink" position="3 1.75 3" rotation="0 90 0" scale=".02 .02 .02"></a-entity>
+    <a-entity gltf-model="#TV" position="3 2.125 3.55" rotation="0 -90 0"></a-entity>
+    <a-entity gltf-model="#bed2" position="6.45 0 1.5" rotation="0 180 0" scale=".031 .035 .041"></a-entity>
+    <a-entity gltf-model="#curtain" rotation="0 -90 0" scale=".6 .5 .5" position="1.8 0 -.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="3 4.55 1.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="-3 4.55 1.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="3 4.55 -2.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="-3 4.55 -2.5"></a-entity>
+    <a-entity gltf-model="#lightSwitch" position="1 2.5 3.5" rotation="0 0 0" scale="2.75 2.75 2.75"></a-entity>
+    <a-entity gltf-model="#lightSwitch" position="1.25 2.5 3.5" rotation="0 0 0" scale="2.75 2.75 2.75"></a-entity>
+
+
+    <a-entity gltf-model="#door" position="-1 0 3.47" rotation="0 180 0" scale="1.75 1.75 1.75"></a-entity>
+
+    <a-entity camera look-controls wasd-controls="acceleration:100" position="0 2.6 0"></a-entity>
+
+
+
+
+
+    <! -- walls, floor, and ceiling -->
+    <a-plane src="#ceiling" position="0 4.55 -.5" rotation="-270 0 0" width="10" height="8" ></a-plane>
+    <a-plane src="#floor" position="0 0 -.5" rotation="-90 0 0" width="10" height="8" ></a-plane>
+
+    <a-plane src="#wall" position="-5 2.275 -.5" rotation="0 90 0" width="8" height="4.55" color="#F5F5DC"></a-plane>
+    <a-plane src="#wall" position="5 2.275 -.5" rotation="0 -90 0" width="8" height="4.55" color="#F5F5DC"></a-plane>
+
+    <a-plane src="#wall" position="0 2.275 -4.5" rotation="0 0 0" width="10" height="4.55" color="#F5F5DC"></a-plane>
+    <a-plane src="#wall" position="0 2.275 3.5" rotation="0 180 0" width="10" height="4.55" color="#F5F5DC"></a-plane>
+    <a-sky color="#ECECEC"></a-sky>
+
+    <a-entity light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="3 4.55 1.5"></a-entity>
+    <a-entity light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="-3 4.55 1.5"></a-entity>
+    <a-entity light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="3 4.55 -2.5"></a-entity>
+    <a-entity light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="-3 4.55 -2.5"></a-entity>
+
+    <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="0 -1 0"></a-entity>
+
+
+
+
+
+
+</a-scene>
+
+</body>
+</html>
