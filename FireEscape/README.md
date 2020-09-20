@@ -6,4 +6,3 @@ The output file is named fireout.txt and is parsed using MKAtoms, and is read ba
 
 This program requires Clingo and MKAtoms to be installed in the user's system path in order to perform the system call. 
 
-[![SC2 Video](fireEscapeDemoImg.png)](fireEscapeDemo.mp4)
