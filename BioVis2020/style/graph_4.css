@@ -1,0 +1,73 @@
+.svgHolder {
+    display: inline;
+}
+
+.menu1{
+    position: absolute;
+    left: 440px;
+    top: 20px;
+}
+.menu2{
+    position: absolute;
+    left: 1450px;
+    top: 20px;
+}
+.legend{
+    position: absolute;
+    top:175px;
+    right: 0px;
+}
+
+.enter {
+    fill: #EDCA3A;
+}
+
+.update {
+    fill: #1FBAD6;
+}
+
+.exit {
+    fill: #F25754;
+}
+
+.selected {
+    fill: #E6B0F1;
+}
+
+div.tooltip {
+    color: black;
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    font-family: Futura;
+    font: 12px sans-serif ;
+    background: #FCB8C3FF;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.attributesMenu {
+    position: absolute;
+    left: 540px;
+    top: 1025px;
+    width: 250px;
+}
+
+div#dotPlotDiv {
+    position: absolute;
+    display: flex;
+    height: 400px;
+    max-width: 80vw;
+    left: 10vw;
+    top: 815px;
+    overflow: scroll;
+}
+
+div.dotplotDiv{
+    position: relative;
+    display: inline-block;
+}
+
