@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="packages/aframe.min.js"></script>
+
+    <title>Project1</title>
+</head>
+<body>
+<a-scene id="mainScene">
+    <a-assets>
+        <a-asset-item id="buttonCall" src="packages/assets/buttonCall.glb"></a-asset-item>
+        <a-asset-item id="buttonYellow" src="packages/assets/buttonYellow.glb"></a-asset-item>
+        <a-asset-item id="buttonGreen" src="packages/assets/buttonGreen.glb"></a-asset-item>
+        <a-asset-item id="chair" src="packages/assets/chair2.glb"></a-asset-item>
+        <a-asset-item id="couch" src="packages/assets/couch2.glb"></a-asset-item>
+        <a-asset-item id="fan" src="packages/assets/fan.glb"></a-asset-item>
+        <a-asset-item id="mask" src="packages/assets/mask/scene.gltf"></a-asset-item>
+        <a-asset-item id="curtain" src="packages/assets/curtains/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="lightFixture" src="packages/assets/light_fixture_-_ceiling_recessed/scene.gltf"></a-asset-item>
+        <a-asset-item id="lightSwitchOff" src="packages/assets/lightSwitchOff.glb"></a-asset-item>
+        <a-asset-item id="lightSwitchOn" src="packages/assets/lightSwitchOn.glb"></a-asset-item>
+        <a-asset-item id="door" src="packages/assets/simple_wood_door/scene.gltf"></a-asset-item>
+        <a-asset-item id="bed2" src="packages/assets/bed/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="preBed" src="packages/assets/preBed/scene.gltf"></a-asset-item>
+        <a-asset-item id="TV" src="packages/assets/TV/OSG_Scene.gltf"></a-asset-item>
+        <a-asset-item id="sink" src="packages/assets/simple_sink/scene.gltf"></a-asset-item>
+        <a-asset-item id="soap" src="packages/assets/soap_dispenser/scene.gltf"></a-asset-item>
+        <a-asset-item id="sanitizer" src="packages/assets/sanitizer_bottle/scene.gltf"></a-asset-item>
+        <a-asset-item id="table" src="packages/assets/table.glb"></a-asset-item>
+
+        <img id="floor" src="packages/textures/floor.jpg">
+        <img id="ceiling" src="packages/textures/ceiling.jpg">
+        <img id="wall" src="packages/textures/wall.jpg">
+        <img id="wood" src="packages/textures/woodTexture.jpg">
+        <img id="painting" src="packages/textures/painting.jpg">
+        <img id="painting2" src="packages/textures/painting2.png">
+        <img id="lights" src="packages/textures/lights.png">
+        <img id="fanImg" src="packages/textures/fan.png">
+        <img id="preCOVIDImg" src="packages/textures/preCovid.png">
+        <img id="postCOVIDImg" src="packages/textures/postCovid.png">
+        <img id="callNurse" src="packages/textures/callNurse.png">
+        <img id="washHands" src="packages/textures/washHangs.jpg">
+        <img id="covidSign" src="packages/textures/covidSign.png">
+    </a-assets>
+    <a-entity id="intercom" gltf-model="#buttonCall" position="4.95 2 -.2" rotation="0 0 90" scale=".1 .1 .1"></a-entity>
+    <a-entity class="COVID" gltf-model="#chair" position="-3.75 .75 1.5" scale=".75 .75 .75" rotation="0 105 0" visible="false"></a-entity>
+    <a-entity class="COVID" gltf-model="#chair" position="-3.75 .75 -2.5" scale=".75 .75 .75" rotation="0 75 0" visible="false"></a-entity>
+    <a-entity class='preCOVID' gltf-model="#couch" position="-3.75 .75 1" scale=".75 .75 .75" rotation="0 90 0" visible="true"></a-entity>
+    <a-entity id="fanID" gltf-model="#fan" position="0 4.18 0" rotation="0 0 0" scale="0.3 0.3 0.3" animation="property: rotation; to: 0 5000 0; loop: true; dur: 15000; autoplay: false; easing: linear"></a-entity>
+<!--    <a-entity class="COVID" gltf-model="#mask" position="4 1.515 1.55" rotation="90 -60 0" scale=".075 .075 .075" visible="false"></a-entity>-->
+    <a-entity class="COVID" gltf-model="#sanitizer" position="4.1 1.5 1.6" rotation="0 -120 0" scale=".035 .035 .035" visible="false"></a-entity>
+    <a-entity class="COVID" gltf-model="#table" src="#wood" position="4.25 0.7 1.5" rotation="180 90 0" scale=".55 .7 .55" visible="false"></a-entity>
+    <a-entity gltf-model="#soap" position="2.45 2.05 3.25" rotation="0 75 0"></a-entity>
+    <a-entity gltf-model="#sink" position="3 1.75 3" rotation="0 90 0" scale=".02 .02 .02"></a-entity>
+    <a-entity class="COVID" gltf-model="#TV" position="3 2.125 3.55" rotation="0 -90 0" visible="false"></a-entity>
+    <a-entity class="COVID" gltf-model="#bed2" position="6 0 1.5" rotation="0 180 0" scale=".031 .035 .041" visible="false"></a-entity>
+    <a-entity class="preCOVID" gltf-model="#preBed" position="6 0 1.5" rotation="0 180 0" scale=".031 .035 .041" visible="true"></a-entity>
+    <a-entity class="COVID" gltf-model="#curtain" rotation="0 -90 0" scale=".6 .5 .5" position="1.8 0 -.5" visible="false"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="3 4.55 1.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="-3 4.55 1.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="3 4.55 -2.5"></a-entity>
+    <a-entity gltf-model="#lightFixture" scale=".025 .025 .025" rotation="0 0 0" position="-3 4.55 -2.5"></a-entity>
+    <a-entity gltf-model="#door" position="-1 0 3.47" rotation="0 180 0" scale="1.75 1.75 1.75"></a-entity>
+
+    <a-camera wasd-controls="acceleration:100" rotation="0 0 0" position="0 2.6 0">
+        <a-cursor color="#FF000"/>
+    </a-camera>
+
+    <!-- walls, floor, and ceiling -->
+    <a-plane src="#ceiling" position="0 4.55 -.5" rotation="-270 0 0" width="10" height="8" ></a-plane>
+    <a-plane static-body src="#floor" position="0 0 -.5" rotation="-90 0 0" width="10" height="8" ></a-plane>
+
+    <a-plane src="#wall" position="-5 2.275 -.5" rotation="0 90 0" width="8" height="4.55" color="#F5F5DC"></a-plane>
+    <a-plane src="#wall" position="5 2.275 -.5" rotation="0 -90 0" width="8" height="4.55" color="#F5F5DC"></a-plane>
+
+    <a-plane src="#wall" position="0 2.275 -4.5" rotation="0 0 0" width="10" height="4.55" color="#F5F5DC"></a-plane>
+    <a-plane src="#wall" position="0 2.275 3.5" rotation="0 180 0" width="10" height="4.55" color="#F5F5DC"></a-plane>
+    <a-sky color="#ECECEC"></a-sky>
+
+    <a-entity id='light' light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="3 4.55 1.5"></a-entity>
+    <a-entity id='light' light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="-3 4.55 1.5"></a-entity>
+    <a-entity id='light' light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="3 4.55 -2.5"></a-entity>
+    <a-entity id='light' light="type: point; intensity: 0.3; distance: 15; decay: 0"
+              position="-3 4.55 -2.5"></a-entity>
+
+    <a-entity id='lightA' light="type: directional; color: #EEE; intensity: 0.5" position="0 -1 0"></a-entity>
+
+    <a-image src="#painting" width="3" height="1.5" position="0 3 -4.49"></a-image>
+    <a-image src="#painting2" width="2.75" height="1.75" position="-4.99 3 -.5" rotation="0 90 0"></a-image>
+    <a-image src="#lights" width=".25" height=".125" rotation="0 180 0" position=".8 2.6125 3.499"></a-image>
+    <a-image src="#fanImg" width=".25" height=".125" rotation="0 180 0" position="1.1 2.6125 3.499"></a-image>
+    <a-image class="COVID" src="#preCOVIDImg" width=".3" height=".15" rotation="0 180 0" position="1.465 2.6125 3.499" visible="false"></a-image>
+    <a-image class="preCOVID" src="#postCOVIDImg" width=".3" height=".15" rotation="0 180 0" position="1.465 2.6125 3.499" visible="true"></a-image>
+    <a-image src="#callNurse" width=".35" height=".175" rotation="0 -90 0" position="4.99 2.25 -.19"></a-image>
+    <a-image class="COVID" src="#washHands" width=".5" height=".25" rotation="0 180 0" position="2.25 2.2 3.499" visible="false"></a-image>
+    <a-image class="COVID" src="#covidSign" width="2" height="2.75" position="-3 2.75 3.49" rotation="0 180 0" visible="false"></a-image>
+
+    <a-cylinder id=water position="2.993 1.931 3.086" scale=".025 .4 .025" color="#d4f1f9" visible="false"></a-cylinder>
+
+
+
+</a-scene>
+
+<audio id="intercomSample">
+    <source src="packages/audio/intercomSample.mp3" type="audio/mpeg">
+</audio>
+<script>
+
+    sceneEl = document.querySelector('#mainScene')
+
+    var switchROn;
+    var switchROff;
+    var switchLOn;
+    var switchLOff;
+    var covidButton;
+    var preCovidButton;
+    var waterFacetOff;
+
+    function renderWaterFacetOff() {
+        waterFacetOff = document.createElement('a-box');
+        waterFacetOff.setAttribute("position", "2.993 2.075 3.3");
+        waterFacetOff.setAttribute("scale", ".5 .1 .1");
+        waterFacetOff.setAttribute("material", {opacity: 0});
+        sceneEl.appendChild(waterFacetOff);
+        waterFacetOff.addEventListener("click", function () {
+            document.querySelector("#water").setAttribute("visible", true);
+            waterFacetOff.parentNode.removeChild(waterFacetOff);
+            renderWaterFacetOn();
+        })
+
+    }
+    renderWaterFacetOff();
+
+    function renderWaterFacetOn() {
+        waterFacetOn = document.createElement('a-box');
+        waterFacetOn.setAttribute("position", "2.993 2.075 3.3");
+        waterFacetOn.setAttribute("scale", ".5 .1 .1");
+        waterFacetOn.setAttribute("material", {opacity: 0});
+        sceneEl.appendChild(waterFacetOn);
+        waterFacetOn.addEventListener("click", function () {
+            document.querySelector("#water").setAttribute("visible", false);
+            waterFacetOn.parentNode.removeChild(waterFacetOn);
+            renderWaterFacetOff();
+        })
+    }
+
+    function renderSwitchROn(){
+        switchROn = document.createElement('a-entity');
+        switchROn.setAttribute('gltf-model', "#lightSwitchOn");
+        switchROn.setAttribute('position',"0.8 2.3 3.5");
+        switchROn.setAttribute('rotation',"0 180 0");
+        switchROn.setAttribute('scale',".175 .21 .175");
+        sceneEl.appendChild(switchROn)
+        switchROn.addEventListener( "click", function (){
+            document.querySelector('#light').setAttribute("light", {intensity:0} );
+            document.querySelector('#lightA').setAttribute("light", {intensity:0} );
+            document.querySelectorAll('.preCOVID').forEach(function (d) {
+                console.log("test");
+                console.log(d);
+                d.setAttribute("visible", true);
+            })
+            switchROn.parentNode.removeChild(switchROn);
+            renderSwitchROff();
+        });
+    }
+    renderSwitchROn();
+
+    function renderSwitchROff(){
+        switchROff = document.createElement('a-entity');
+        switchROff.setAttribute('gltf-model', "#lightSwitchOff");
+        switchROff.setAttribute('position',"0.8 2.3 3.5");
+        switchROff.setAttribute('rotation',"0 180 0");
+        switchROff.setAttribute('scale',".175 .21 .175");
+        sceneEl.appendChild(switchROff)
+        switchROff.addEventListener( "click", function (){
+            document.querySelector('#light').setAttribute("light", {intensity:0.3} );
+            document.querySelector('#lightA').setAttribute("light", {intensity:0.5} );
+            switchROff.parentNode.removeChild(switchROff);
+            renderSwitchROn();
+        });
+
+    }
+
+    function renderSwitchLOn(){
+        switchLOn = document.createElement('a-entity');
+        switchLOn.setAttribute('gltf-model', "#lightSwitchOn");
+        switchLOn.setAttribute('position',"1.1 2.3 3.5");
+        switchLOn.setAttribute('rotation',"0 180 0");
+        switchLOn.setAttribute('scale',".175 .21 .175");
+        sceneEl.appendChild(switchLOn)
+        switchLOn.addEventListener( "click", function (){
+            document.querySelector('#fanID').setAttribute("animation", {enabled: false} );
+            switchLOn.parentNode.removeChild(switchLOn);
+            renderSwitchLOff();
+        });
+    }
+
+    function renderSwitchLOff(){
+        switchLOff = document.createElement('a-entity');
+        switchLOff.setAttribute('gltf-model', "#lightSwitchOff");
+        switchLOff.setAttribute('position',"1.1 2.3 3.5");
+        switchLOff.setAttribute('rotation',"0 180 0");
+        switchLOff.setAttribute('scale',".175 .21 .175");
+        sceneEl.appendChild(switchLOff)
+        switchLOff.addEventListener( "click", function (){
+            document.querySelector('#fanID').setAttribute("animation", {property: 'rotation', to: '0 5000 0', loop: true, dur: '15000', autoplay: true, easing: 'linear', enabled: true} );
+            switchLOff.parentNode.removeChild(switchLOff);
+            renderSwitchLOn();
+        });
+    }
+    renderSwitchLOff();
+
+    function renderCovidButton(){
+        covidButton = document.createElement('a-entity');
+        covidButton.setAttribute('gltf-model', "#buttonGreen");
+        covidButton.setAttribute('position',"1.475 2.325 3.425");
+        covidButton.setAttribute('rotation',"-90 0 0");
+        covidButton.setAttribute('scale',".12 .12 .12");
+        sceneEl.appendChild(covidButton)
+        covidButton.addEventListener( "click", function (){
+            document.querySelectorAll('.preCOVID').forEach(function (d) {
+                d.setAttribute("visible", false);
+            })
+            document.querySelectorAll('.COVID').forEach(function (d) {
+                d.setAttribute("visible", true);
+            })
+            covidButton.parentNode.removeChild(covidButton);
+            renderPreCovidButton();
+        });
+    }
+    renderCovidButton();
+
+    function renderPreCovidButton(){
+        preCovidButton = document.createElement('a-entity');
+        preCovidButton.setAttribute('gltf-model', "#buttonYellow");
+        preCovidButton.setAttribute('position',"1.475 2.325 3.425");
+        preCovidButton.setAttribute('rotation',"-90 0 0");
+        preCovidButton.setAttribute('scale',".12 .12 .12");
+        sceneEl.appendChild(preCovidButton)
+        preCovidButton.addEventListener( "click", function (){
+            document.querySelectorAll('.preCOVID').forEach(function (d) {
+                d.setAttribute("visible", true);
+            })
+            document.querySelectorAll('.COVID').forEach(function (d) {
+                d.setAttribute("visible", false);
+            })
+            preCovidButton.parentNode.removeChild(preCovidButton);
+            renderCovidButton();
+        });
+    }
+
+    // switchROff.addEventListener( "click", function (){
+    //     document.querySelector('#light').setAttribute("light", {intensity:0.3} );
+    //     document.querySelector('#lightA').setAttribute("light", {intensity:0.5} );
+    //     switchROff.parentNode.removeChild(switchROff);
+    //     switchROn = document.createElement('a-entity');
+    //     switchROn.setAttribute('gltf-model', "#lightSwitchOn");
+    //     switchROn.setAttribute('position',"0.8 2.3 3.5");
+    //     switchROn.setAttribute('rotation',"0 180 0");
+    //     switchROn.setAttribute('scale',".175 .21 .175");
+    //     sceneEl.appendChild(switchROn)
+    // });
+
+
+
+
+    // console.log(entityEl)
+    //
+    // var lightToggle = true;
+    //
+    // var el1 = document.querySelector('#switchR').addEventListener( "click", function (){
+    //     if (lightToggle){
+    //         document.querySelector('#light').setAttribute("light", {intensity:0} )
+    //         document.querySelector('#off').setAttribute("visible", true);;
+    //         console.log(document.querySelector('#switchR').parentNode.removeChild('#switchR'))
+    //         lightToggle = false;
+    //     }
+    // })
+    //
+    // var el2 = document.querySelector('#switchR').addEventListener( "click", function (){
+    //     if (!lightToggle){
+    //         console.log("test")
+    //         document.querySelector('#light').setAttribute("light", {intensity:0.3} );
+    //         document.querySelector('#on').setAttribute("visible", true);
+    //         document.querySelector('#off').setAttribute("visible", false);
+    //         lightToggle = true;
+    //     }
+    // })
+
+    // var lightToggle = true;
+    //
+    // var el1 = document.querySelector('#switchROn').addEventListener( "click", function (){
+    //     if (lightToggle){
+    //         document.querySelector('#light').setAttribute("light", {intensity:0} );
+    //         document.querySelector('#switchROn').setAttribute("visible", false);
+    //         document.querySelector('#switchROff').setAttribute("visible", true);
+    //         lightToggle = false;
+    //     }
+    // })
+    //
+    // var el2 = document.querySelector('#switchROff').addEventListener( "click", function (){
+    //     console.log("test")
+    //     if (!lightToggle){
+    //         document.querySelector('#light').setAttribute("light", {intensity:0.3} );
+    //         document.querySelector('#switchROn').setAttribute("visible", true);
+    //         document.querySelector('#switchROff').setAttribute("visible", false);
+    //         lightToggle = true;
+    //     }
+    // })
+
+
+    // var lightRToggle = true;
+    // var lightLToggle = true;
+    //
+    //
+    // var el1 = document.querySelector('#switchR').addEventListener( "click", function (){
+    //     if (lightRToggle && lightLToggle){
+    //         document.querySelector('#lightR').setAttribute("light", {intensity:0} );
+    //         //document.querySelectorAll(".COVID").forEach(function (d) {
+    //         //    d.setAttribute("visible", false);
+    //         //})
+    //         //document.querySelector(".COVID1").setAttribute("visible", false);
+    //         //document.querySelector(".COVID2").setAttribute("visible", false);
+    //         lightRToggle = false;
+    //     }
+    //     else if (lightRToggle && !lightLToggle){
+    //         document.querySelector('#lightR').setAttribute("light", {intensity:0} );
+    //         document.querySelector('#lightA').setAttribute("light", {intensity:0} );
+    //         lightRToggle = false;
+    //     }
+    //     else if (!lightRToggle && lightLToggle){
+    //         document.querySelector('#lightR').setAttribute("light", {intensity:0.3} );
+    //         lightRToggle = true;
+    //     }
+    //     else if (!lightRToggle && !lightLToggle){
+    //         document.querySelector('#lightR').setAttribute("light", {intensity:0.3} );
+    //         document.querySelector('#lightA').setAttribute("light", {intensity:0.5} );
+    //         lightRToggle = true;
+    //     }
+    // } )
+    // var el2 = document.querySelector('#switchL').addEventListener( "click", function (){
+    //     if (lightLToggle && lightRToggle){
+    //         document.querySelector('#lightL').setAttribute("light", {intensity:0} );
+    //         lightLToggle = false;
+    //     }
+    //     else if (lightLToggle && !lightRToggle){
+    //         document.querySelector('#lightL').setAttribute("light", {intensity:0} );
+    //         document.querySelector('#lightA').setAttribute("light", {intensity:0} );
+    //         lightLToggle = false;
+    //     }
+    //     else if (!lightLToggle && lightRToggle){
+    //         document.querySelector('#lightL').setAttribute("light", {intensity:0.3} );
+    //         lightLToggle = true;
+    //     }
+    //     else if (!lightLToggle && !lightRToggle){
+    //         document.querySelector('#lightL').setAttribute("light", {intensity:0.3} );
+    //         document.querySelector('#lightA').setAttribute("light", {intensity:0.5} );
+    //         lightLToggle = true;
+    //     }
+    // } )
+
+    var intercom = document.querySelector('#intercom').addEventListener( "click", function (){
+        document.querySelector('#intercomSample').play()
+    })
+
+
+</script>
+</body>
+</html>
