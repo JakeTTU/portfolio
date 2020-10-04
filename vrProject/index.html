@@ -158,11 +158,6 @@
         switchROn.addEventListener( "click", function (){
             document.querySelector('#light').setAttribute("light", {intensity:0} );
             document.querySelector('#lightA').setAttribute("light", {intensity:0} );
-            document.querySelectorAll('.preCOVID').forEach(function (d) {
-                console.log("test");
-                console.log(d);
-                d.setAttribute("visible", true);
-            })
             switchROn.parentNode.removeChild(switchROn);
             renderSwitchROff();
         });
