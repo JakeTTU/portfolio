@@ -1,0 +1,611 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 82,
+      "max": [
+        1.7804601192474365,
+        1.1487607955932617,
+        2.0000002384185791
+      ],
+      "min": [
+        -2.2195403575897217,
+        0.14876073598861694,
+        -2.0000009536743164
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 984,
+      "componentType": 5126,
+      "count": 82,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 82,
+      "max": [
+        1.028437614440918,
+        1.0284377336502075
+      ],
+      "min": [
+        -0.028437614440917969,
+        -0.028437554836273193
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 240,
+      "max": [
+        81
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1968,
+      "componentType": 5126,
+      "count": 1812,
+      "max": [
+        14.34321403503418,
+        11.547816276550293,
+        25.438140869140625
+      ],
+      "min": [
+        -35.192047119140625,
+        -0.5,
+        -26.1243896484375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 23712,
+      "componentType": 5126,
+      "count": 1812,
+      "max": [
+        0.99692386388778687,
+        1,
+        0.93265622854232788
+      ],
+      "min": [
+        -0.99617987871170044,
+        -1,
+        -0.95943343639373779
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 656,
+      "componentType": 5126,
+      "count": 1812,
+      "max": [
+        0.90526974201202393,
+        0.93817341327667236
+      ],
+      "min": [
+        0.00180693285074085,
+        0.0019920321647077799
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 960,
+      "componentType": 5125,
+      "count": 8580,
+      "max": [
+        1811
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 45456,
+      "componentType": 5126,
+      "count": 1396,
+      "max": [
+        -3.0791935920715332,
+        28.840265274047852,
+        12.180852890014648
+      ],
+      "min": [
+        -16.627492904663086,
+        11.185741424560547,
+        -12.867100715637207
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 62208,
+      "componentType": 5126,
+      "count": 1396,
+      "max": [
+        0.99993443489074707,
+        1,
+        0.9999968409538269
+      ],
+      "min": [
+        -0.99995887279510498,
+        -1,
+        -0.99999690055847168
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 15152,
+      "componentType": 5126,
+      "count": 1396,
+      "max": [
+        0.73557847738265991,
+        0.99800801277160645
+      ],
+      "min": [
+        0.0018069257494062185,
+        0.47597530484199524
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 35280,
+      "componentType": 5125,
+      "count": 5964,
+      "max": [
+        1395
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 78960,
+      "componentType": 5126,
+      "count": 1449,
+      "max": [
+        2.9632925987243652,
+        0.18842911720275879,
+        4.019890308380127
+      ],
+      "min": [
+        -36.666488647460938,
+        -22.599607467651367,
+        -2.9632940292358398
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 96348,
+      "componentType": 5126,
+      "count": 1449,
+      "max": [
+        0.99999970197677612,
+        1,
+        0.99999958276748657
+      ],
+      "min": [
+        -0.99993038177490234,
+        -0.99991196393966675,
+        -0.99999958276748657
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 26320,
+      "componentType": 5126,
+      "count": 1449,
+      "max": [
+        0.9525754451751709,
+        0.99487900733947754
+      ],
+      "min": [
+        0.0019013483542948961,
+        0.0019920323975384235
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 59136,
+      "componentType": 5125,
+      "count": 6240,
+      "max": [
+        1448
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 113736,
+      "componentType": 5126,
+      "count": 496,
+      "max": [
+        3.9468073844909668,
+        -5.8775177001953125,
+        4.9751896858215332
+      ],
+      "min": [
+        -16.546543121337891,
+        -13.489669799804688,
+        -3.9475002288818359
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 119688,
+      "componentType": 5126,
+      "count": 496,
+      "max": [
+        0.99924260377883911,
+        0.99999415874481201,
+        0.9999997615814209
+      ],
+      "min": [
+        -0.99982595443725586,
+        -0.99998563528060913,
+        -0.99999970197677612
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 37912,
+      "componentType": 5126,
+      "count": 496,
+      "max": [
+        0.95257538557052612,
+        0.998008131980896
+      ],
+      "min": [
+        0.10626023262739182,
+        0.72222477197647095
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 84096,
+      "componentType": 5125,
+      "count": 1440,
+      "max": [
+        495
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Andrew.Mischenko (https://sketchfab.com/Andrew.Mischenko)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/simple-sink-73bda35b6e7a499a80427fc1b049b192",
+      "title": "Simple Sink"
+    },
+    "generator": "Sketchfab-8.4.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 89856,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 41880,
+      "byteOffset": 89856,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 125640,
+      "byteOffset": 131736,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 257376,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "drain_surface",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.65924126863515453,
+          0.65924126863515453,
+          0.65924126863515453,
+          1
+        ],
+        "metallicFactor": 0.64195884146341464,
+        "roughnessFactor": 0.16901676829268297
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "sink_inner_surface",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.71430556116615862,
+          0.71430556116615862,
+          0.71430556116615862,
+          1
+        ],
+        "metallicFactor": 0.1053734756097561,
+        "roughnessFactor": 0.27267530487804881
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "sink_metal_surface",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.74943454243317531,
+          0.74943454243317531,
+          0.74943454243317531,
+          1
+        ],
+        "metallicFactor": 1,
+        "roughnessFactor": 0.07755335365853655
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "pipe_surface",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.20817454268292682,
+          0.20817454268292682,
+          0.20817454268292682,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.29706554878048785
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "sink_pipe_second_surface",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.25390625,
+          0.25390625,
+          0.25390625,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.63852896341463417
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "polySurface2_drain_surface_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "polySurface2_sink_inner_surface_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "polySurface2_sink_metal_surface_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "polySurface2_pipe_surface_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "polySurface2_sink_pipe_second_surface_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 17,
+            "POSITION": 16,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "sink_with_pipes.fbx"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "name": "polySurface2"
+    },
+    {
+      "mesh": 0,
+      "name": "polySurface2_drain_surface_0"
+    },
+    {
+      "mesh": 1,
+      "name": "polySurface2_sink_inner_surface_0"
+    },
+    {
+      "mesh": 2,
+      "name": "polySurface2_sink_metal_surface_0"
+    },
+    {
+      "mesh": 3,
+      "name": "polySurface2_pipe_surface_0"
+    },
+    {
+      "mesh": 4,
+      "name": "polySurface2_sink_pipe_second_surface_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+
