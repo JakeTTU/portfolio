@@ -4,7 +4,7 @@ Demo Link: https://youtu.be/cM-Cst74Xc4
 
 **Introduction**
 
-  The focus for this virtual reality project is to examine the differences in environment caused by the COVID-19 pandemic. To do this, A-frame virtual reality framework and webVR was used to create an interactive environment to demonstrate some of the changes caused by the virus. 
+    The focus for this virtual reality project is to examine the differences in environment caused by the COVID-19 pandemic. To do this, A-frame virtual reality framework and webVR was used to create an interactive environment to demonstrate some of the changes caused by the virus. 
 
 
 **The Environment**
