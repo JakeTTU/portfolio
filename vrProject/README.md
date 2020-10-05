@@ -9,26 +9,26 @@ The focus for this virtual reality project is to examine the differences in envi
 
 **The Environment**
 
-The environment incorporated several interactive objects to engage the user with the environment. These objects included two switches, one controlling the lighting of the environment and the other controlling the rotation animation of a ceiling fan. A nurse call button located above the patient's hospital bed that plays intercom audio alerting nurses that the patient in the room is in need of assistance. The changing between per-COVID and post-COVID layouts is controlled by a button near the fan and light switches. When the button is colored green, the layout shown in the environment is the pre-COVID layout. When the button is clicked, the color changes to yellow and the layout shown in the environment is changed to the post-COVID layout. The final object that the user can interact with is the sink. When the user hovers the cursor over the faucet of the sink and clicks, the the water turns on. When the user clicks the faucet again when the water is on, the water turns off. 
+The virtual environment incorporated several interactive objects to engage the user with the environment. These objects included two switches, one controlling the lighting of the environment and the other controlling the rotation animation of a ceiling fan. A nurse call button located above the patient's hospital bed that plays intercom audio alerting nurses that the patient in the room is in need of assistance. The changing between pre-COVID and post-COVID layouts is controlled by a button near the fan and light switches. When the button is colored green, the layout shown in the environment is the pre-COVID layout. When the button is clicked, the color changes to yellow and the layout shown in the environment is changed to the post-COVID layout. The final object that the user can interact with is the sink. When the user hovers the cursor over the faucet of the sink and clicks, the water turns on. When the user clicks the faucet again while the water is on, the water turns off. 
 
 
 **Pre/Post-COVID Comparison**
 
 The main difference demonstrated in the environment is the removal of medical equipment and monitors surrounding the patient's bed. In the post-COVID environment all of the patient's medical information is shown on a TV screen located above the sink away from the patient. The reason for the removal of the medical equipment is to reduce the amount of physical objects health care workers need to interact with to give proper care to the patient. By consolidating all the patient's medical information on the TV screen away from the patient, the amount of surface contamination the health care workers are exposed to is reduced.
 
-  Another difference in the environment between the pre-COVID era layout and the post-COVID layout is the visitors' area located on the opposite side of the room as the patient. In the pre-COVID layout visitors can be seated together on a couch. However, in the post-COVID layout this couch is removed and replaced by two chairs separated by a physical distance. Between the chairs also sits a table with hand sanitizer on it. 
+Another difference in the environment between the pre-COVID era layout and the post-COVID layout is the visitors' area located on the opposite side of the room from the patient. In the pre-COVID layout visitors can be seated together on a couch. However, in the post-COVID layout this couch is removed and replaced by two chairs separated by a physical distance. Between the chairs also sits a table with hand sanitizer on it. 
 
 
 **3-D Models**
 
-This VR environment featured original 3-D models created in blender and some 3-D models sourced from the internet. The couch, chair, light-switch, fan, buttons, and table were original 3-D models created in Blender. The water object was created using the primitive cylinder object in A-frame. The hospital bed with medical equipment, the curtain, and the TV screen objects were downloaded from www.sketchfab.com and modified using the online editor at www.gltfeditor.com. The door, sink, hand sanitizer bottle, and light fixture objects were also downloaded from www.sketchfab.com. 
+This VR environment featured original 3-D models created in Blender and some 3-D models sourced from the internet. The couch, chair, light-switch, fan, buttons, and table were original 3-D models created in Blender. The water object was created using the primitive cylinder object in A-frame. The hospital bed with medical equipment, the curtain, and the TV screen objects were downloaded from www.sketchfab.com and modified using the online editor at www.gltfeditor.com. The door, sink, hand sanitizer bottle, and light fixture objects were also downloaded from www.sketchfab.com. 
 
 The images used to texture the floor and ceiling were found using a google image search and tiled using www.imgonline.com.ua. The images used to texture the walls, table, couch, chairs, and seat cousins were also found using a google image search. 
 
 
 **Conclusion**
 
-This project offered a very valuable learning experience into how to use the virtual reality framework, A-frame, and the 3-D modeling software, Blender. This was an intuitive introduction to web-VR that is user friendly and lightweight enough to be run on the browser of a normal computer or mobile device without the need for any specialized hardware. This project offered enough insight to be comfortable enough to implement more detailed and interactive virtual reality concepts such as dynamic physics animations.
+This project offered a very valuable learning experience into how to use the virtual reality framework, A-frame, and the 3-D modeling software, Blender. This also provided an intuitive introduction to web-VR that is user friendly and lightweight enough to be run on the browser of a normal computer or mobile device without the need for any specialized hardware. This project offered enough insight to be comfortable enough to implement more detailed and interactive virtual reality concepts such as dynamic physics animations for futuer projects.
 
 
 **References**
