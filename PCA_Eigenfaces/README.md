@@ -6,4 +6,7 @@ This R program uses a Pinciple Component Analysis (PCA) dimensionality reduction
 
 ### To Run:
 
-This R script and dashboard require R https://cloud.r-project.org
+This R script and dashboard require R https://cloud.r-project.org. 
+Package dependencies include: 
+  * Item 2a
+  * Item 2b
