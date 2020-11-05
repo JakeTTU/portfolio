@@ -11,3 +11,8 @@ Package dependencies include:
   * RSpectra - https://cran.r-project.org/web/packages/RSpectra/index.html
   * Shiny - https://cran.r-project.org/web/packages/shiny/index.html
   * Shinydashboard - https://cran.r-project.org/web/packages/shinydashboard/index.html
+ 
+1. Download the repo to the Desktop
+   1. Item 3a
+   1. Item 3b
+Download the repo to the Desktop
