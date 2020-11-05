@@ -6,13 +6,12 @@ This R program uses a Pinciple Component Analysis (PCA) dimensionality reduction
 
 ### To Run:
 
-This R script and dashboard require R https://cloud.r-project.org. 
+This R script and dashboard require R https://cloud.r-project.org & RStudio https://rstudio.com/products/rstudio/download/. 
 Package dependencies include: 
   * RSpectra - https://cran.r-project.org/web/packages/RSpectra/index.html
   * Shiny - https://cran.r-project.org/web/packages/shiny/index.html
   * Shinydashboard - https://cran.r-project.org/web/packages/shinydashboard/index.html
  
  1. Download the repo to the Desktop
- 2. Item 3a
- 3. Item 3b
-Download the repo to the Desktop
+ 2. Run script.R
+ 3. Run dashboard.R
