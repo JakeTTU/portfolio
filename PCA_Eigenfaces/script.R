@@ -1,5 +1,5 @@
 library(RSpectra)
-data <- read.csv("Desktop/Assignment2/face_data_1.csv")
+data <- read.csv("Desktop/PCA_Eigenfaces/face_data_1.csv")
 
 plt_img <- function(x){ image(x, col=grey(seq(0, 1, length=256)))}
 
@@ -12,7 +12,7 @@ for(i in 1:nrow(data))
 }
 
 df=as.data.frame(newdata)
-write.csv(df,'Desktop/Assignment2/train_faces.csv',row.names=FALSE)
+write.csv(df,'Desktop/PCA_Eigenfaces/train_faces.csv',row.names=FALSE)
 
 D <- data.matrix(df)
 
