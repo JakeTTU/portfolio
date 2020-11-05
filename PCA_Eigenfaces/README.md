@@ -8,5 +8,6 @@ This R program uses a Pinciple Component Analysis (PCA) dimensionality reduction
 
 This R script and dashboard require R https://cloud.r-project.org. 
 Package dependencies include: 
-  * Item 2a
-  * Item 2b
+  * RSpectra - https://cran.r-project.org/web/packages/RSpectra/index.html
+  * Shiny - https://cran.r-project.org/web/packages/shiny/index.html
+  * Shinydashboard - https://cran.r-project.org/web/packages/shinydashboard/index.html
