@@ -1,8 +1,8 @@
 **Project 1**
 
-https://JakeTTU.github.io/vrProject/index.html
+WebVR Demo: https://JakeTTU.github.io/vrProject/index.html
 
-Demo Link: https://youtu.be/cM-Cst74Xc4
+Demo Video: https://youtu.be/cM-Cst74Xc4
 
 **Introduction**
 
