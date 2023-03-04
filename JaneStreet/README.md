@@ -1,1 +1,1 @@
-twenty-four-seven: https://JakeTTU.github.io/JaneStreet/JaneStreet_twenty-four-seven.html
+twenty-four-seven: https://JakeTTU.github.io/JaneStreet/twenty-four-seven/twenty-four-seven.html
