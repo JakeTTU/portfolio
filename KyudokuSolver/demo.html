@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kyudoku Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="container">
+    <video id="demo" controls>
+        <source src="kyudokuDemo.mp4" type="video/mp4">
+    </video>
+    <div id="info">
+        <p>
+            <b>Theory and Practice of Logic Programming (CS 5398) - Summer 2019 - Dr. Richard Watson</b>
+        </p>
+        <p>
+            This Kyudoku puzzle solver GUI requires Python 3.7 or later.
+            The program creates a file based on the user's input and performs a system call to Clingo.
+            The output file is named kyuout.lp and is parsed using MKAtoms, and is read back to the GUI.
+            This program requires Clingo and MKAtoms to be installed in the user's system path in order to perform the system call.
+        </p>
+    </div>
+</div>
+</body>
+</html>
